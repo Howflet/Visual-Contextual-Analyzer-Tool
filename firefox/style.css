@@ -1,0 +1,154 @@
+:root{
+    --bg:#0f1115;
+    --card:#121417;
+    --muted:#9aa0a6;
+    --text:#e6eef3;
+    --primary:#2519d1;
+    --accent:#6ee7b7;
+    --border: rgba(255,255,255,0.06);
+    --radius:12px;
+}
+
+body[data-theme='light']{
+    --bg: #f6f7f8;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --text: #0b1220;
+    --primary: #2519d1;
+    --accent: #10b981;
+    --border: rgba(2,6,23,0.06);
+}
+
+/* Improve light-theme readability by using stronger panel and input contrast */
+body[data-theme='light'] .container{
+    background: var(--card);
+    border:1px solid rgba(2,6,23,0.06);
+    box-shadow: 0 8px 28px rgba(2,6,23,0.06);
+}
+
+/* Smooth theme transitions for colorable UI elements */
+body, .container, button, input, textarea, select, .theme-toggle, .remove-btn, #analysisText, #analysisText a {
+    transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease, box-shadow 240ms ease, fill 240ms ease, stroke 240ms ease;
+}
+body[data-theme='light'] input, body[data-theme='light'] textarea, body[data-theme='light'] select{
+    background: #ffffff;
+    color:var(--text);
+    border:1px solid rgba(2,6,23,0.08);
+}
+body[data-theme='light'] .instructions details{background:#fbfbfc;border:1px solid rgba(2,6,23,0.04);color:var(--muted)}
+body[data-theme='light'] .container hr{border-top:1px solid rgba(2,6,23,0.06)}
+
+/* Make button text stand out on light backgrounds */
+body[data-theme='light'] button,
+body[data-theme='light'] .remove-btn,
+body[data-theme='light'] .theme-toggle {
+    color: #ffffff !important;
+}
+
+*{box-sizing:border-box}
+html,body{
+    height:100%;
+}
+body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    /* Use a solid background color to avoid subtle horizontal seams */
+    background-color: var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+}
+
+.container{
+    max-width:940px;
+    margin:36px auto;
+    padding:28px;
+    /* Use a single translucent panel color (no gradient) to avoid subtle banding */
+    background: rgba(18,20,23,0.5);
+    /* make border extra subtle */
+    border:1px solid rgba(255,255,255,0.02);
+    border-radius:var(--radius);
+    /* Even softer shadow so edges blend on different displays */
+    box-shadow: 0 8px 22px rgba(2,6,23,0.32);
+}
+
+/* Theme toggle button in the top-right of the container */
+.theme-toggle{
+    position:absolute;right:18px;top:18px;z-index:20;border-radius:999px;border:none;padding:8px 10px;font-size:16px;cursor:pointer;background:rgba(0,0,0,0.06);color:var(--text);
+}
+.container{position:relative}
+.theme-toggle[aria-pressed='true']{background:rgba(37,25,209,0.12);}
+.theme-toggle:focus{outline:none;box-shadow:0 0 0 4px rgba(37,25,209,0.12)}
+@media(max-width:560px){.theme-toggle{right:12px;top:12px}}
+/* Make inline SVGs inherit color */
+.theme-toggle svg{display:block;width:16px;height:16px;fill:currentColor;stroke:currentColor}
+
+h1{font-size:24px;margin:0 0 10px 0}
+p{color:var(--muted);margin:0 0 14px 0}
+
+.input-group{margin-bottom:16px}
+label{display:block;margin-bottom:8px;font-weight:600;color:var(--text)}
+input[type='password'], input[type='text'], textarea, select{
+    width:100%;padding:10px 12px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text);
+}
+select{appearance:none;-webkit-appearance:none;background:transparent}
+/* Make select control and its options match the theme where possible */
+select, select option{
+    background-color: var(--card);
+    color:var(--text);
+}
+select{background-image:linear-gradient(45deg, transparent 50%, var(--muted) 50%),linear-gradient(135deg, var(--muted) 50%, transparent 50%);background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:34px;border:1px solid var(--border);border-radius:8px}
+select:focus{outline:none;box-shadow:0 0 0 3px rgba(37,25,209,0.12)}
+textarea{min-height:96px}
+/* Make prompt textarea non-resizable and scrollable */
+#promptText{resize:none;max-height:220px;overflow-y:auto}
+
+button{
+    background:var(--primary);color:#07202a;padding:10px 14px;border-radius:9px;border:none;cursor:pointer;font-weight:700;
+}
+button:hover{filter:brightness(.95)}
+
+#status{margin-top:12px;color:var(--accent)}
+
+.instructions{margin-top:16px}
+.instructions details{font-size:13px;color:var(--muted);background:rgba(255,255,255,0.02);border:1px solid var(--border);padding:10px;border-radius:8px}
+.instructions summary{font-weight:700;cursor:pointer;display:list-item}
+
+/* Layout for sections below */
+/* hr only inside the container */
+.container hr{border:none;border-top:1px solid rgba(255,255,255,0.02);margin:22px 0}
+/* Hide any stray hr elements outside the container (defensive) */
+body > hr{display:none}
+h2{margin:18px 0 8px 0}
+
+.input-group > button{display:inline-block;margin-top:6px}
+
+/* Blacklist list items: prevent overlapping remove buttons */
+#blacklistList{list-style:disc;padding-left:20px;margin-top:12px}
+.blacklist-item{display:flex;align-items:center;justify-content:flex-start;gap:12px;margin:8px 0}
+.blacklist-item .host-name{flex:1;color:var(--text)}
+.remove-btn{background:var(--primary);color:#07202a;padding:6px 10px;border-radius:8px;border:none;cursor:pointer;min-width:64px}
+.remove-btn:hover{filter:brightness(.95)}
+
+/* Results page */
+.results-container{display:flex;flex-direction:column}
+#loading{text-align:center;padding:48px}
+.spinner{width:44px;height:44px;border-radius:50%;border:5px solid rgba(255,255,255,0.06);border-top-color:var(--primary);animation:spin 1s linear infinite;margin:18px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+#results{display:flex;gap:26px}
+.image-column,.text-column{flex:1}
+#imageCanvas{width:100%;border-radius:8px;border:1px solid var(--border)}
+#analysisText{white-space:pre-wrap;line-height:1.6;color:var(--text)}
+
+/* Details summary chevron */
+#instructions summary{position:relative;padding-left:22px}
+/* Links inside analysis results */
+#analysisText a{color:var(--primary);text-decoration:underline}
+#analysisText a:hover{text-decoration:none}
+.instructions summary::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%) rotate(0deg);width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform-origin:center;display:inline-block;transition:transform .18s}
+.instructions details[open] summary::before{transform:translateY(-50%) rotate(45deg);border-color:var(--primary)}
+
+@media(max-width:760px){.container{margin:18px;padding:18px}}
+
+/* Hide chevron for the specific API key instructions details */
+#apiKeyInstructions summary::before{display:none}

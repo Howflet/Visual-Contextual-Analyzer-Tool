@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container results-container">
+    <title>VCA Tool - Analysis</title>
+    <h1>VCA Tool - Analysis Result</h1>
+        <div id="loading">
+            <p>Analyzing your image with Gemini...</p>
+            <div class="spinner"></div>
+        </div>
+        <div class="results-actions">
+            <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle theme"></button>
+            <button id="openSettings">Open Settings</button>
+        </div>
+        <div id="results" style="display: none;">
+            <div class="image-column">
+                <h2>Captured Image</h2>
+                <canvas id="imageCanvas"></canvas>
+            </div>
+            <div class="text-column">
+                <h2>Gemini Analysis</h2>
+                <p id="analysisText"></p>
+            </div>
+        </div>
+    </div>
+    <script src="browser-polyfill.js"></script>
+    <script src="results.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <title>VCA Tool Settings</title>
+    <h1>VCA Tool - Settings</h1>
+        <p>Please enter your Google Gemini API key below.</p>
+        <div class="input-group">
+            <label for="apiKey">Gemini API Key:</label>
+            <input type="password" id="apiKey" size="60">
+        </div>
+        <!-- Theme toggle sits in the top-right of the container -->
+        <button id="themeToggle" class="theme-toggle" aria-pressed="false" title="Toggle theme">🌙</button>
+        <button id="save">Save</button>
+        <div id="status"></div>
+            <div class="instructions">
+                <details id="apiKeyInstructions" open>
+                <summary>How to get an API key</summary>
+                <ol>
+                    <li>Go to Google AI Studio.</li>
+                    <li>Click "Get API Key" and create one in your Google Cloud project.</li>
+                    <li>Copy the key and paste it here.</li>
+                </ol>
+            </details>
+        </div>
+        <hr>
+    <h2>Blacklisted Sites</h2>
+    <p>Add hostnames (one per entry) that should be treated as sensitive. Example: example.com or sub.example.com</p>
+    <div class="input-group">
+        <input type="text" id="blacklistInput" placeholder="Enter hostname, e.g. example.com" size="40">
+        <button id="addBlacklist">Add</button>
+    </div>
+    <ul id="blacklistList"></ul>
+
+    <hr>
+    <h2>Custom Prompts</h2>
+    <p>Create, name, and save prompts you can use when calling Gemini.</p>
+    <div class="input-group">
+        <input type="text" id="promptName" placeholder="Prompt name" size="30">
+    </div>
+    <div class="input-group">
+        <textarea id="promptText" rows="4" cols="60" placeholder="Enter prompt text here"></textarea>
+    </div>
+        <div class="input-group">
+            <button id="savePrompt">Save Prompt</button>
+            <button id="cancelEdit" style="display:none; margin-left:8px">Cancel</button>
+            <select id="savedPrompts"></select>
+            <button id="deletePrompt">Delete</button>
+            <button id="setDefaultPrompt">Set Default</button>
+        </div>
+        <hr>
+        <h2>Results Display</h2>
+        <p>Choose where analysis results open after capture.</p>
+        <div class="input-group">
+            <label for="resultsTarget">Open results in:</label>
+            <select id="resultsTarget">
+                <option value="tab">New Tab</option>
+                <option value="window">New Window</option>
+            </select>
+        </div>
+    </div>
+    <script src="browser-polyfill.js"></script>
+    <script src="options.js"></script>
+</body>
+</html>
