@@ -1,7 +1,7 @@
 VCA Tool
 ========
 
-VCA (Visual Contextual Analyzer) Tool is a browser extension for Chrome and Firefox that captures a region of a webpage and sends it to a generative vision model for analysis.
+VCA (Visual Contextual Analyzer) Tool is a browser extension for Chrome and Firefox that captures a region of a webpage and sends it to a Google Gemini vision model for analysis.
 
 
 Features
@@ -54,4 +54,5 @@ Notes & Next steps
 
 Contact
 -------
+
 For further changes, tell me what you'd like updated next (README tweaks, packaging, automated tests, or data migration).
