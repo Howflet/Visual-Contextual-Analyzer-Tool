@@ -52,7 +52,3 @@ Notes & Next steps
 - If you rename storage keys or change data formats, consider adding a migration routine in the background to preserve user data.
 - The current blacklist matching is hostname-based with simple suffix matching (sub.example.com matches example.com).
 
-Contact
--------
-
-For further changes, tell me what you'd like updated next (README tweaks, packaging, automated tests, or data migration).
